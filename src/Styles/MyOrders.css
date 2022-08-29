@@ -1,0 +1,17 @@
+.totalAmount{
+   
+    margin-bottom: 20px;
+}
+.allTotal{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+   
+}
+
+.myTotal{
+    width: 50%;
+    /* margin-left: 100px; */
+}
+

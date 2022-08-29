@@ -32,6 +32,7 @@ const reducer = (state, action) => {
         ...state,
         cartItems: action.cartItems,
       };
+  
 
     default:
       return state;

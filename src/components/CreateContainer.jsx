@@ -20,6 +20,7 @@ import { storage } from "../firebase.config";
 import { getAllFoodItems, saveItem } from "../utils/firebaseFunctions";
 import { actionType } from "../context/reducer";
 import { useStateValue } from "../context/StateProvider";
+import Header  from "./Header";
 
 const CreateContainer = () => {
   const [title, setTitle] = useState("");
@@ -36,7 +37,7 @@ const CreateContainer = () => {
   const uploadImage = (e) => {
     setIsLoading(true);
     const imageFile = e.target.files[0];
-    const storageRef = ref(storage, `Images/${Date.now()}-${imageFile.name}`);
+    const storageRef = ref(storage, `Images/₹{Date.now()}-₹{imageFile.name}`);
     const uploadTask = uploadBytesResumable(storageRef, imageFile);
 
     uploadTask.on(
@@ -98,7 +99,7 @@ const CreateContainer = () => {
         }, 4000);
       } else {
         const data = {
-          id: `${Date.now()}`,
+          id: `₹{Date.now()}`,
           title: title,
           imageURL: imageAsset,
           category: category,
@@ -148,23 +149,12 @@ const CreateContainer = () => {
   };
 
   return (
+    <>
+    <div>
+      <Header/>
+    </div>
     <div className="w-full min-h-screen flex items-center justify-center">
-      <div className="w-[90%] md:w-[50%] border border-gray-300 rounded-lg p-4 flex flex-col items-center justify-center gap-4">
-        {/* {fields && (
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className={`w-full p-2 rounded-lg text-center text-lg font-semibold ${
-              alertStatus === "danger"
-                ? "bg-red-400 text-red-800"
-                : "bg-emerald-400 text-emerald-800"
-            }`}
-          >
-            {msg}
-          </motion.p>
-        )} */}
-
+      <div className="mt-[95px] w-[90%] md:w-[50%] border border-gray-300 rounded-lg p-4 flex flex-col items-center justify-center gap-4">
         <div className="w-full py-2 border-b border-gray-300 flex items-center gap-2">
           <MdFastfood className="text-xl text-gray-700" />
           <input
@@ -176,7 +166,6 @@ const CreateContainer = () => {
             className="w-full h-full text-lg bg-transparent outline-none border-none placeholder:text-gray-400 text-textColor"
           />
         </div>
-
         <div className="w-full">
           <select
             onChange={(e) => setCategory(e.target.value)}
@@ -283,7 +272,7 @@ const CreateContainer = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className={`w-full p-2 rounded-lg text-center text-lg font-semibold ${
+            className={`w-full p-2 rounded-lg text-center text-lg font-semibold ₹{
               alertStatus === "danger"
                 ? "bg-red-400 text-red-800"
                 : "bg-emerald-400 text-emerald-800"
@@ -294,6 +283,8 @@ const CreateContainer = () => {
         )}
       </div>
     </div>
+    </>
+
   );
 };
 

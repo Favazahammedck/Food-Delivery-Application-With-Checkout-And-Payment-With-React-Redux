@@ -1,0 +1,49 @@
+.coupens{
+    display: flex;
+    flex-wrap: wrap;
+    padding: 50px;
+    width: 100%;
+
+}
+.coupensInner{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* height: 130px; */
+    width: 250px;
+    background: #fa7e26;
+    border-radius: 20px;
+    border: 3px solid black;
+    margin-left: 50px;
+    margin-top: 270px;
+    padding: 10px;
+
+}
+.coupensInner h1{
+color:  white;
+border: 4px dashed rgba(237, 243, 249, 0.797);
+border-radius: 3px;
+padding: 12px;
+
+}
+.coupenHeading{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+    color: #fa7e26;
+}
+.coupenHeading h1{
+    font-size:50px;
+
+}
+.discountPercentage{
+    font-size: 20px;
+    color: #000;
+}
+.copyBtn{
+    font-size: 20px;
+    border: 2px solid white;
+    background-color: red;
+    border-radius: 10px;
+}

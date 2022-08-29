@@ -1,0 +1,103 @@
+.checkoutMain {
+  margin-top: 100px;
+  margin-left: 50px;
+  width: 45%;
+}
+h1 {
+  font-size: 26px;
+}
+.labels {
+  color: rgba(0, 0, 0, 0.495);
+  font-size: 20px;
+  margin-top: 10px;
+}
+.star {
+  color: red;
+}
+.inputBox {
+  width: 100%;
+  border: 1px solid #f48c43;
+  height: 40px;
+  border-radius: 10px;
+}
+.billingBtn {
+  width: 40%;
+  margin-left: 190px;
+}
+.inputBoxLabel {
+  font-size: 13px;
+  margin-top: 10px;
+}
+.finalInputBox {
+  margin-top: 24px;
+}
+.orderSummarySection {
+  width: 50%;
+  margin-left: 50px;
+  margin-top: 100px;
+}
+.checkoutAll {
+  display: flex;
+}
+
+.subTotal {
+  background-color: #f07720;
+  border: 2px solid #000000;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 5px;
+}
+.totalCheckoutAmout {
+  background-color: #ff7d1f;
+  border: 2px solid #f48c43;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  height: 140px;
+  margin-top: 8px;
+}
+.price {
+  color: white;
+}
+.summaryItemDetails {
+  margin-bottom: 10px;
+}
+small {
+  color: red;
+}
+.checkBox {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom: 10px;
+  margin-top: 5px;
+}
+
+.discountCode {
+  font-size: 16px;
+  color: #f17821;
+}
+#coupenInputBox {
+  width: 48%;
+}
+.coupenBtn {
+  margin-left: 40px;
+}
+.coupenBtn:hover{
+    background: white;
+    border: 2px dashed #ff6f07;
+    color: #ff6f07;
+}
+.cartcount{
+    display: flex;
+    justify-content: end;
+    margin-right: 30px;
+}
+.cartcount p{
+    color: grey;
+font-size: 15px;
+}
+.allTotal p{
+   /* margin-left: 220px;  */
+}

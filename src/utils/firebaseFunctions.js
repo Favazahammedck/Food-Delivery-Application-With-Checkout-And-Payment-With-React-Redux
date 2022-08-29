@@ -14,7 +14,6 @@ export const saveItem = async (data) => {
     merge: true,
   });
 };
-
 // getall food items
 export const getAllFoodItems = async () => {
   const items = await getDocs(

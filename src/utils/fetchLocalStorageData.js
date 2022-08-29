@@ -15,3 +15,4 @@ export const fetchCart = () => {
 
   return cartInfo ? cartInfo : [];
 };
+

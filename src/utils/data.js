@@ -72,3 +72,39 @@ export const categories = [
     urlParamName: "drinks",
   },
 ];
+
+export const coupenCodes=[
+  {
+    code:"E3fT5gr",
+    discount:"50%"
+  },
+  {
+    code:"Y4g45Gd",
+    discount:"30%"
+
+  },
+  {
+    code:"Fet45H",
+    discount:"25%"
+
+  },
+  {
+    code:"FD43f3",
+    discount:"35%"
+
+  },
+  // {
+  //   code:"pe3GGe",
+  //   discount:"40%"
+
+  // },
+  // {
+  //   code:"hse96Kl"
+  // },
+  // {
+  //   code:"IFF4hK"
+  // },
+  // {
+  //   code:"UbiB35"
+  // },
+]

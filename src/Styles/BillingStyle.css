@@ -1,0 +1,70 @@
+.checkoutMain{
+    width: 45%;
+}
+h1{
+    font-size: 26px;
+}
+.labels{
+    color: rgba(0, 0, 0, 0.495);
+    font-size: 20px;
+    margin-top: 10px;
+
+}
+
+.inputBox{
+    width: 100%;
+    border: 1px solid #f48c43;
+    height: 40px;
+    border-radius: 10px;
+}
+.billingBtn{
+    width: 40%;
+}
+.inputBoxLabel{
+    font-size: 13px;
+    margin-top: 10px;
+}
+.finalInputBox{
+    margin-top: 24px;
+}
+.orderSummarySection{
+    width: 50%;
+    margin-left: 50px;
+}
+.checkoutAll{
+    display: flex;
+}
+
+.subTotal{
+    background-color: #f48d4362;
+    border: 2px solid #f48c43;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+
+}
+.totalCheckoutAmout{
+    background-color: #f48d43c8;
+    border: 2px solid #f48c43;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    height: 140px;
+    margin-top: 8px;
+}
+.price{
+    color: white;
+}
+.summaryItemDetails{
+    margin-bottom: 10px;
+}
+small{
+    color: red;
+}
+.checkBox{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 10px;
+    margin-top: 5px;
+}
