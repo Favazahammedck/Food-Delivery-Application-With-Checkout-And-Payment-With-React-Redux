@@ -23,8 +23,8 @@ useEffect(() => {
   console.log(tot);
 }, [tot, flag]);
 
-  const { firstCheckbox, secondCheckbox } = useContext(BillingContext);
-
+  const { amount } = useContext(BillingContext);
+  
   return (
 <>
 <header className="fixed z-50 w-screen p-3 px-4 md:p-6 md:px-16 bg-primary">
@@ -90,29 +90,14 @@ useEffect(() => {
 
      <OrderSummary/>
      <div className='totalAmount'>
-     {firstCheckbox == "fast" ? (
+     {/* {firstCheckbox == 4 ? ( */}
                 <>
-                  {/* <div className="w-full  subTotal">
-                    <p className=" text-lg">Subtotal: {tot}</p>
-                    <p className=" text-lg">Delivery: ₹ 4</p>
-                  </div> */}
-                  <div className="w-full subTotal allTotal">
-                    <p className=" text-lg">Total Amount (Including Delivery Charges) : {tot + 4}</p>
-                  </div>
-                </>
-              ) :null}
-              {secondCheckbox == "normal" ? (
                
-                <>
-                  {/* <div className="w-full  subTotal">
-                    <p className=" text-lg">Subtotal: {tot}</p>
-                    <p className=" text-lg">Delivery: ₹ 2</p>
-                  </div> */}
-                  <div className="w-full  subTotal allTotal myTotal">
-                    <p className=" text-lg">Total Amount (Including Delivery Charges) : {tot + 2}</p>
+                  <div className="w-full subTotal allTotal">
+                    <p className=" text-lg">Total Amount(after discounts & delivery charges ) : {amount}</p>
                   </div>
                 </>
-                ) :null}
+             
               
     </div>
     </div>

@@ -73,11 +73,15 @@ const Header = () => {
                 Home
               </li>
             </Link>
-            <Link to={"/myaccount"}>
-            <li className="text-lg text-textColor hover:text-headingColor duration-100 transition-all ease-in-out cursor-pointer">
-              My Account
-            </li>
-            </Link>
+        {user?(
+ <Link to={"/myaccount"}>
+ <li className="text-lg text-textColor hover:text-headingColor duration-100 transition-all ease-in-out cursor-pointer">
+   My Account
+ </li>
+ </Link>
+        ):null}
+
+           
             <Link to={"/about"}>
               <li className="text-lg text-textColor hover:text-headingColor duration-100 transition-all ease-in-out cursor-pointer">
                 About Us

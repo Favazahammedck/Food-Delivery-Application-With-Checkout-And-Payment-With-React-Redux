@@ -75,22 +75,22 @@ export const categories = [
 
 export const coupenCodes=[
   {
-    code:"E3fT5gr",
-    discount:"50%"
+    code:"E3fT50%",
+    discount:"50"
   },
   {
-    code:"Y4g45Gd",
-    discount:"30%"
+    code:"Y5Gd30%",
+    discount:"30"
 
   },
   {
-    code:"Fet45H",
-    discount:"25%"
+    code:"FTeH25%",
+    discount:"25"
 
   },
   {
-    code:"FD43f3",
-    discount:"35%"
+    code:"FDfH35%",
+    discount:"35"
 
   },
   // {

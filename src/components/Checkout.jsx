@@ -14,21 +14,42 @@ import { MdShoppingBasket, MdAdd, MdLogout } from "react-icons/md";
 import { BillingContext } from "./BillingContext";
 import { useContext } from "react";
 
-
-
 const Checkout = () => {
-  const {firstCheckbox,setFirstCheckBox,secondCheckbox,setSecondCheckBox}=useContext(BillingContext)
+  const {
+    firstCheckbox,
+    setFirstCheckBox,
+    secondCheckbox,
+    setSecondCheckBox,
+    discountRate,
+    setDiscountRate,
+    coupenCodes,
+    setDeliveryMode,
+  } = useContext(BillingContext);
+  console.log("setDeliveryMode",setDeliveryMode);
   const [{ user, cartShow, cartItems }, dispatch] = useStateValue();
-  const { coupenCodes } = useContext(BillingContext);
-  console.log("coupenCode==In Checkout",coupenCodes);
 
-  const [coupenDiscount,setCoupenDiscout]=useState("")
-  const handleCoupen=(userDetails)=>{
-// if(userDetails==)
- 
-  }
- 
-  
+  console.log("coupenCode==In Checkout", coupenCodes);
+
+  const [invalidCoupen, setInvalidCoupen] = useState("");
+
+  const handleCoupen = () => {
+    console.log("add to coupen");
+    let coupenData = coupenCodes.filter((data) => {
+      if (data.code == userDetails.coupenCode) {
+        return true;
+      }
+    });
+    if (coupenData.length === 0) {
+      console.log("invalid");
+      setInvalidCoupen("false");
+    } else {
+      console.log("valid", coupenData[0].discount);
+      const discountedPrice = (tot * coupenData[0].discount) / 100;
+      setDiscountRate(discountedPrice);
+      setInvalidCoupen("true");
+    }
+  };
+
   const {
     register,
     handleSubmit,
@@ -63,8 +84,6 @@ const Checkout = () => {
     value = event.target.value;
     setUserDetails({ ...userDetails, [name]: value });
   };
-
-
 
   // connect with firebase for userDetails save to the realtime db.
   const saveDetails = async (event) => {
@@ -144,16 +163,17 @@ const Checkout = () => {
   const findCheckedBoxOrNot = (e) => {
     const checked = e.target.checked;
     if (checked) {
-      setFirstCheckBox("fast");
+      setFirstCheckBox(4);
+      setDeliveryMode("Fast Delivery");
     }
   };
-  // const [secondCheckbox, setSecondCheckBox] = useState("");
-  // console.log("normal", secondCheckbox);
+
   const findCheckedBoxOrNotSecond = (e) => {
     const checked = e.target.checked;
     if (checked) {
-      setSecondCheckBox("normal");
-    } 
+      setFirstCheckBox(2);
+      setDeliveryMode("Normal Delivery");
+    }
   };
 
   return (
@@ -380,12 +400,19 @@ const Checkout = () => {
               value={userDetails.coupenCode}
               onChange={postUserData}
             />
+
             <input
               type="button"
               className=" p-2 rounded bg-orange-400 text-gray-50 text-lg my-2 hover:shadow-lg billingBtn  coupenBtn"
               onClick={handleCoupen}
               value="APPLY COUPEN"
             />
+
+            <div>
+              {invalidCoupen == "false" ? (
+                <small>Invalid Coupen Code</small>
+              ) : null}
+            </div>
             <input
               type="submit"
               className=" p-2 rounded-full bg-gradient-to-tr from-orange-400 to-orange-600 text-gray-50 text-lg my-2 hover:shadow-lg billingBtn"
@@ -453,11 +480,17 @@ const Checkout = () => {
                   <p className=" text-lg">Delivery: ₹ 2</p>
                 </div>
               ) : null} */}
-              {/* {secondCheckbox == "normal" ? ( */}
+              {invalidCoupen == "true" ? (
+                <div className="w-full  subTotal allTotal">
+                  <p className=" text-lg">
+                    Total Amount : {tot - discountRate}
+                  </p>
+                </div>
+              ) : (
                 <div className="w-full  subTotal allTotal">
                   <p className=" text-lg">Total Amount : {tot}</p>
                 </div>
-              {/* ) : null} */}
+              )}
             </div>
           ) : (
             <div className="w-full h-full flex flex-col items-center justify-center gap-6">

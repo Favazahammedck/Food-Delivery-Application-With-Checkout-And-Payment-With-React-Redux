@@ -7,7 +7,7 @@ import Logo from "../img/logo.png";
 import { useContext } from "react";
 import { BillingContext } from "./BillingContext";
 import "../Styles/CoupenCode.css";
-import { useState } from "react";
+// import { useState } from "react";
 
 
 
@@ -23,6 +23,7 @@ const CoupenCode = () => {
 
   return (
     <>
+    
       <header className="fixed z-50 w-screen p-3 px-4 md:p-6 md:px-16 bg-primary">
         {/* desktop & tablet */}
         <div className="hidden md:flex w-full h-full items-center justify-between">
@@ -51,7 +52,7 @@ const CoupenCode = () => {
               </Link>
               <Link to={"/coupencode"}>
                 <li className="text-lg  text-white bg-orange-400  rounded hover:text-headingColor duration-100 transition-all ease-in-out cursor-pointer">
-                  Coupen Code
+                  My Coupens
                 </li>
               </Link>
               <Link to={"/paymentstatus"}>
@@ -81,7 +82,7 @@ const CoupenCode = () => {
               <h1 id="codeOfcoupen">
                 {coupenAndDiscount.code} <br />{" "}
                 <span className="discountPercentage" id="discountCode">
-                  Discount :{coupenAndDiscount.discount}
+                  Discount :{coupenAndDiscount.discount}%
                 </span>{" "}
                 <br />{" "}
                 <button className="copyBtn" id="copyButton">

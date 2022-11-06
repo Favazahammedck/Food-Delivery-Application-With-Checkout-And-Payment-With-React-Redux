@@ -4,104 +4,12 @@ import { Link, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { useStateValue } from "../context/StateProvider";
 import EmptyCart from "../img/emptyCart.svg";
-import CartItem from "./CartItem";
-import { actionType } from "../context/reducer";
 
-import { useForm } from "react-hook-form";
-import HeaderOnlyLogo from "./HeaderOnlyLogo";
-// import {firebase} from "../firebase.config";
-import { MdShoppingBasket, MdAdd, MdLogout } from "react-icons/md";
 
 const OrderSummary = () => {
   const [{ user, cartShow, cartItems }, dispatch] = useStateValue();
 
-//   const {
-//     register,
-//     handleSubmit,
-//     formState: { errors },
-//     reset,
-//   } = useForm();
-//   const navigate = useNavigate();
-//   const onSubmit = (data) => {
-//     if (data) {
-//       saveDetails();
-//     }
-//     reset();
-//   };
 
-//   const [userDetails, setUserDetails] = useState({
-//     email: "",
-//     firstName: "",
-//     lastName: "",
-//     phoneNumer: "",
-//     country: "",
-//     state: "",
-//     streetAdrress: "",
-//     city: "",
-//     zip: "",
-//     shippingMethod: "",
-//     coupenCode: "",
-//   });
-//   let name, value;
-
-//   const postUserData = (event) => {
-//     name = event.target.name;
-//     value = event.target.value;
-//     setUserDetails({ ...userDetails, [name]: value });
-//     console.log("name", name);
-//     console.log("value", value);
-//   };
-
-  // connect with firebase for userDetails save to the realtime db.
-//   const saveDetails = async (event) => {
-//     event.preventDefault();
-//     const {
-//       email,
-//       firstName,
-//       lastName,
-//       phoneNumer,
-//       country,
-//       state,
-//       streetAdrress,
-//       city,
-//       zip,
-//       shippingMethod,
-//       coupenCode,
-//     } = userDetails;
-//     const result = fetch(
-//       "https://fooddeliverycutomerdetails-default-rtdb.firebaseio.com/userDetailsCollection.json",
-//       {
-//         method: "POST",
-//         headers: {
-//           "Content-Type": "application/json",
-//         },
-//         body: JSON.stringify({
-//           email,
-//           firstName,
-//           lastName,
-//           phoneNumer,
-//           country,
-//           state,
-//           streetAdrress,
-//           city,
-//           zip,
-//           shippingMethod,
-//           coupenCode,
-//         }),
-//       }
-//     ).then(() => {
-//       navigate("/billing");
-//     });
-//   };
-
-  // const showCart = () => {
-  //   dispatch({
-  //     type: actionType.SET_CART_SHOW,
-  //     cartShow: !cartShow,
-  //   });
-  // };
-
-//   console.log("errors", errors);
 
   const [flag, setFlag] = useState(1);
   const [tot, setTot] = useState(0);
@@ -136,14 +44,14 @@ const OrderSummary = () => {
   };
   const [secondCheckbox, setSecondCheckBox] = useState("");
   console.log("true", firstCheckbox);
-  const findCheckedBoxOrNotSecond = (e) => {
-    const checked = e.target.checked;
-    if (checked) {
-      setSecondCheckBox(true);
-    } else {
-      setSecondCheckBox(false);
-    }
-  };
+  // const findCheckedBoxOrNotSecond = (e) => {
+  //   const checked = e.target.checked;
+  //   if (checked) {
+  //     setSecondCheckBox(true);
+  //   } else {
+  //     setSecondCheckBox(false);
+  //   }
+  // };
 
   return (
     <>

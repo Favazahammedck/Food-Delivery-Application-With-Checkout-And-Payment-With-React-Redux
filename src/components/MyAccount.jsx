@@ -1,6 +1,6 @@
 import React from 'react'
 import HeaderOnlyLogo from './HeaderOnlyLogo'
-import MyAccountHeader from './MyAccountHeader'
+import MyAccountHeader from './MyProfile'
 
 const MyAccount = () => {
   return (

@@ -7,10 +7,35 @@ import HeaderOnlyLogo from "./HeaderOnlyLogo";
 import { useNavigate } from "react-router-dom";
 import { BillingContext } from "./BillingContext";
 import { useContext } from "react";
-import Image from "../img/delivery.png";
+
 // import { useForm } from "react-hook-form";
 const Billing = () => {
-  const { firstCheckbox, secondCheckbox } = useContext(BillingContext);
+  const {
+    firstCheckbox,
+    setFirstCheckBox,
+    discountRate,
+    setDiscountRate,
+
+    date,
+    setDate,
+    month,
+    setMonth,
+    time,
+    setTime,
+    deliveryMode,
+    setDeliveryMode,
+    modeOfShipping,
+    setModeOfShipping,
+    status,
+    setStatus,
+    amount,
+    setAmount,
+  } = useContext(BillingContext);
+  console.log("date=", date);
+  console.log("month=", month);
+  console.log("time=", time);
+  console.log("setModeOfShipping=", setModeOfShipping);
+
   // const {
   //   register,
   //   handleSubmit,
@@ -35,17 +60,75 @@ const Billing = () => {
     console.log(tot);
   }, [tot, flag]);
   const navigate = useNavigate();
+
+  // handleSaveToDb
+
+  const handleSaveToDb = async (event) => {
+    const result = fetch(
+      "https://paymentstatusfodddelivery-default-rtdb.firebaseio.com//paymentStatusFoodDeliveryApp.json",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          date,
+
+          month,
+
+          time,
+          status,
+          amount,
+          deliveryMode,
+          modeOfShipping,
+        }),
+      }
+    );
+    console.log("result of save to db", result);
+  };
+
+  // hanlde submit
+
   const handleSubmitBilling = (e) => {
     e.preventDefault();
+    handleSaveToDb();
+    var currentDate = new Date();
+    setDate(currentDate.getDate(), currentDate.getMonth());
+
+    var currentMonth = new Date();
+    const locale =
+      navigator.languages != undefined
+        ? navigator.languages[0]
+        : navigator.language;
+    setMonth(currentMonth.toLocaleDateString(locale, { month: "long" }));
+
+    let now = new Date();
+
+    new Intl.DateTimeFormat("default", {
+      hour12: true,
+      hour: "numeric",
+      minute: "numeric",
+    }).format(now);
+
+    setTime(
+      new Intl.DateTimeFormat("default", {
+        hour12: true,
+        hour: "numeric",
+        minute: "numeric",
+      }).format(now)
+    );
+
     if (tot + 2 == "") {
+      setStatus("Failed");
       console.log("tot", tot + 2);
       alert("please enter amount");
     } else {
       // alert(tot+2)
+      setAmount(tot - discountRate + firstCheckbox);
       var options = {
         key: "rzp_test_8JpRUvNnpNQxUO",
         key_secret: "KZnOUJ9n1M3XSizBTQekZfM8",
-        amount: (tot + 2) * 100,
+        amount: (tot - discountRate + firstCheckbox) * 100,
         currency: "INR",
         name: "FOODLINES",
         description: "foodline razorpay payment",
@@ -72,8 +155,12 @@ const Billing = () => {
         },
       };
       if (codChecked == true) {
+        setModeOfShipping("Cash On Delivery");
+        setStatus("Success");
         navigate("/successordermessage");
       } else {
+        setModeOfShipping("Card Payment/Net Banking");
+        setStatus("Success");
         var pay = new window.Razorpay(options);
         pay.open();
       }
@@ -179,25 +266,29 @@ const Billing = () => {
 
               {/* cart total section */}
 
-              {firstCheckbox == "fast" ? (
+              {firstCheckbox == 4 ? (
                 <>
                   <div className="w-full  subTotal">
-                    <p className=" text-lg">Subtotal: {tot}</p>
+                    <p className=" text-lg">Subtotal: {tot - discountRate}</p>
                     <p className=" text-lg">Delivery: ₹ 4</p>
                   </div>
                   <div className="w-full subTotal allTotal">
-                    <p className=" text-lg">Total Amount: {tot + 4}</p>
+                    <p className=" text-lg">
+                      Total Amount: {tot - discountRate + 4}
+                    </p>
                   </div>
                 </>
               ) : null}
-              {secondCheckbox == "normal" ? (
+              {firstCheckbox == 2 ? (
                 <>
                   <div className="w-full  subTotal">
-                    <p className=" text-lg">Subtotal: {tot}</p>
+                    <p className=" text-lg">Subtotal: {tot - discountRate}</p>
                     <p className=" text-lg">Delivery: ₹ 2</p>
                   </div>
                   <div className="w-full  subTotal allTotal">
-                    <p className=" text-lg">Total Amount : {tot + 2}</p>
+                    <p className=" text-lg">
+                      Total Amount : {tot - discountRate + 2}
+                    </p>
                   </div>
                 </>
               ) : null}

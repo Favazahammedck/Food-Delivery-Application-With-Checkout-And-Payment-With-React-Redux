@@ -1,5 +1,5 @@
 
-.myprofile{
+.paymentStatusMain{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -7,7 +7,7 @@
     width: 100%;
 }
 table {
-    border: 5px solid #ccc;
+    border: 5px solid #f178219a;
     border-collapse: collapse;
     margin: 0;
     padding: 0;
@@ -22,7 +22,7 @@ table {
   
   table tr {
     background-color: #f8f8f8;
-    border: 1px solid #ddd;
+    border: 1px solid #f1782177;
     padding: .35em;
   }
   
@@ -59,13 +59,13 @@ table {
     }
     
     table tr {
-      border-bottom: 3px solid #ddd;
+      border-bottom: 3px solid #f178219a;
       display: block;
       margin-bottom: .625em;
     }
     
     table td {
-      border-bottom: 1px solid #ddd;
+      border-bottom: 1px solid #f178219a;
       display: block;
       font-size: .8em;
       text-align: right;
@@ -83,4 +83,6 @@ table {
       border-bottom: 0;
     }
   }
-  
+  caption{
+      color: #f17821;
+  }

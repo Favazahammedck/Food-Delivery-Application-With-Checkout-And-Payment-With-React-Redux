@@ -11,15 +11,26 @@ import MyAccount from "./components/MyAccount";
 import { BillingContext } from "./components/BillingContext";
 import { useState } from "react";
 import MyOrders from "./components/MyOrders";
-import MyAccountHeader from "./components/MyAccountHeader";
+import MyProfile from "./components/MyProfile";
 import CoupenCode from "./components/CoupenCode";
 import PaymentStatus from "./components/PaymentStatus";
-import {coupenCodes} from './utils/data'
+import { coupenCodes } from "./utils/data";
 const App = () => {
   const [{ foodItems }, dispatch] = useStateValue();
   const [firstCheckbox, setFirstCheckBox] = useState("");
   const [secondCheckbox, setSecondCheckBox] = useState("");
-  
+  const [discountRate, setDiscountRate] = useState("");
+
+  // payment status states
+
+  const [date, setDate] = useState("");
+  const [month, setMonth] = useState("");
+
+  const [time, setTime] = useState("");
+  const [deliveryMode, setDeliveryMode] = useState("");
+  const [modeOfShipping, setModeOfShipping] = useState("");
+  const [status, setStatus] = useState("");
+  const [amount, setAmount] = useState("");
 
   const fetchData = async () => {
     await getAllFoodItems().then((data) => {
@@ -46,6 +57,22 @@ const App = () => {
             secondCheckbox,
             setSecondCheckBox,
             coupenCodes,
+            discountRate,
+            setDiscountRate,
+            date,
+            setDate,
+            month,
+            setMonth,
+            time,
+            setTime,
+            deliveryMode,
+            setDeliveryMode,
+            modeOfShipping,
+            setModeOfShipping,
+            status,
+            setStatus,
+            amount,
+            setAmount,
           }}
         >
           <Routes>
@@ -58,12 +85,10 @@ const App = () => {
               element={<SuccessOrderMessage />}
             />
             <Route path="/myaccount" element={<MyAccount />} />
-            <Route path="/myorders" element={<MyOrders/>}/>
-            <Route path="/myprofile" element={<MyAccountHeader/>}/>
-            <Route path="/coupencode" element={<CoupenCode/>}/>
-            <Route path="/paymentstatus" element={<PaymentStatus/>}/>
-
-           
+            <Route path="/myorders" element={<MyOrders />} />
+            <Route path="/myprofile" element={<MyProfile />} />
+            <Route path="/coupencode" element={<CoupenCode />} />
+            <Route path="/paymentstatus" element={<PaymentStatus />} />
           </Routes>
         </BillingContext.Provider>
       </main>

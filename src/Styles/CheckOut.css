@@ -95,9 +95,9 @@ small {
     margin-right: 30px;
 }
 .cartcount p{
-    color: grey;
+    color: #f17821;
 font-size: 15px;
 }
 .allTotal p{
-   /* margin-left: 220px;  */
+   margin-left: 220px; 
 }

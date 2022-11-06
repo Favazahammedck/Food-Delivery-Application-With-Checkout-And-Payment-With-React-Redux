@@ -1,11 +1,38 @@
-import React from 'react'
-import '../Styles/MyAccountHeader.css'
+import React, { useContext } from 'react'
+import '../Styles/PaymentStatus.css'
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { useStateValue } from "../context/StateProvider";
 import Logo from "../img/logo.png";
+import { BillingContext } from './BillingContext';
+
+
 
 const PaymentStatus  = () => {
+  const {
+    firstCheckbox,
+    setFirstCheckBox,
+    discountRate,
+    setDiscountRate,
+
+
+
+    date,
+    setDate,
+    month,
+    setMonth,
+    time,
+    setTime,
+    deliveryMode,
+    setDeliveryMode,
+    modeOfShipping,
+    setModeOfShipping,
+    status,
+    setStatus,
+    amount,
+    setAmount,
+
+  } = useContext(BillingContext);
   return (
 <>
 <header className="fixed z-50 w-screen p-3 px-4 md:p-6 md:px-16 bg-primary">
@@ -61,15 +88,33 @@ const PaymentStatus  = () => {
       </div>
      
     </header>
-    <div>
-      <h1>Payment Status</h1>
-      <h1>Payment Status</h1>
-
-      <h1>Payment Status</h1>
-
-
-      
-    </div>
+    <div className="paymentStatusMain">
+     
+     <table>
+  <caption>My Payment Status</caption>
+  <thead>
+    <tr>
+      <th scope="col">Date</th>
+      <th scope="col">Time</th>
+      <th scope="col">Delivery Mode</th>
+      <th scope="col">Shipping Mode</th>
+      <th scope="col">Status</th>
+      <th scope="col">Amount</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <td data-label="Date">{date} {month}</td>
+      <td data-label="Time">{time}</td>
+      <td data-label="Delivery Mode">{deliveryMode}</td>
+      <td data-label="Shipping Mode">{modeOfShipping}</td>
+      <td data-label="Status">{status}</td>
+      <td data-label="Amount"> {amount}</td>
+    </tr>
+    
+  </tbody>
+</table>
+ </div>
 
 </>
   )
